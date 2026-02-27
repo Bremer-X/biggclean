@@ -449,11 +449,96 @@
         /* ============================
        BENEFÍCIOS
     ============================ */
+        .benefits-section {
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .benefits-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .benefits-bg__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.92) 0%, rgba(21, 101, 192, 0.86) 100%);
+            z-index: 2;
+        }
+
+        .benefits-bg__slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: bgFade 18s infinite;
+            z-index: 1;
+        }
+
+        .benefits-bg__slide.slide-1 {
+            background-image: url('https://images.unsplash.com/photo-1583847268964-b28ce8f52859?q=80&w=1920&auto=format&fit=crop');
+            animation-delay: 0s;
+        }
+
+        .benefits-bg__slide.slide-2 {
+            background-image: url('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1920&auto=format&fit=crop');
+            animation-delay: 6s;
+        }
+
+        .benefits-bg__slide.slide-3 {
+            background-image: url('https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1920&auto=format&fit=crop');
+            animation-delay: 12s;
+        }
+
+        @keyframes bgFade {
+            0% {
+                opacity: 0;
+                transform: scale(1);
+            }
+
+            10% {
+                opacity: 1;
+                transform: scale(1.02);
+            }
+
+            33% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            43% {
+                opacity: 0;
+                transform: scale(1.07);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+        }
+
+        .benefits-section .section__label {
+            color: var(--accent);
+        }
+
+        .benefits-section .section__sub {
+            color: rgba(255, 255, 255, .85);
+        }
+
+        .benefits-section .section__title {
+            color: var(--white);
+        }
+
         .benefits__grid {
             display: grid;
             gap: 24px;
             margin-top: 48px;
             grid-template-columns: 1fr;
+            position: relative;
+            z-index: 2;
         }
 
         @media (min-width: 640px) {
@@ -469,12 +554,16 @@
         }
 
         .benefit-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid var(--accent);
             border-radius: var(--radius-md);
             padding: 32px 24px;
-            box-shadow: var(--shadow-sm);
-            border-top: 4px solid var(--primary);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             transition: var(--transition);
+            color: var(--white);
         }
 
         .benefit-card:hover {
@@ -495,7 +584,7 @@
 
         .benefit-card__text {
             font-size: .88rem;
-            color: var(--gray-600);
+            color: rgba(255, 255, 255, 0.85);
             line-height: 1.65;
         }
 
@@ -960,8 +1049,14 @@
     </section>
 
     <!-- BENEFÍCIOS -->
-    <section class="section section--alt" id="beneficios" aria-labelledby="beneficios-title">
-        <div class="container">
+    <section class="section benefits-section" id="beneficios" aria-labelledby="beneficios-title">
+        <div class="benefits-bg">
+            <div class="benefits-bg__slide slide-1"></div>
+            <div class="benefits-bg__slide slide-2"></div>
+            <div class="benefits-bg__slide slide-3"></div>
+            <div class="benefits-bg__overlay"></div>
+        </div>
+        <div class="container" style="position: relative; z-index: 2;">
             <div class="text-center">
                 <span class="section__label">Por que escolher a BigClean</span>
                 <h2 class="section__title" id="beneficios-title">Mais que limpeza — <br />saúde para sua família</h2>
