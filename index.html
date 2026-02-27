@@ -15,10 +15,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
 
-    <!-- GSAP & VanillaTilt -->
+    <!-- GSAP, VanillaTilt & Swiper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
         /* ============================
@@ -368,82 +369,85 @@
         }
 
         /* ============================
-       SERVIÇOS
+       SERVIÇOS SWIPER CAROUSEL
     ============================ */
-        .services__grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 16px;
+        .services-swiper {
+            width: 100%;
+            padding-bottom: 50px;
             margin-top: 48px;
         }
 
-        .service-card {
-            background: var(--white);
-            border: 1.5px solid var(--gray-200);
+        .service-slide-card {
+            position: relative;
             border-radius: var(--radius-md);
-            padding: 24px 16px;
-            text-align: center;
-            transition: var(--transition);
-            cursor: default;
-        }
-
-        .service-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
-        }
-
-        .service-card__icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .service-card__name {
-            font-size: .9rem;
-            font-weight: 600;
-            color: var(--gray-800);
-        }
-
-        /* Automotivo destaque */
-        .service-card--highlight {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
-            color: var(--white);
-            border-color: transparent;
+            overflow: hidden;
+            background: var(--gray-800);
+            aspect-ratio: 4/5;
             display: flex;
-            align-items: center;
-            gap: 20px;
-            text-align: left;
-            padding: 28px 28px;
+            align-items: flex-end;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
         }
 
-        .service-card--highlight:hover {
-            border-color: transparent;
+        .service-slide-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
         }
 
-        .service-card--highlight .service-card__icon {
-            font-size: 3rem;
-            margin: 0;
-            flex-shrink: 0;
+        .service-slide-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.4s ease, transform 0.6s ease;
         }
 
-        .service-card--highlight .service-card__name {
-            font-size: 1.1rem;
-            font-weight: 700;
+        .service-slide-card:hover .service-slide-img {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        .service-slide-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px 24px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+            width: 100%;
             color: var(--white);
         }
 
-        .service-card--highlight .service-card__sub {
-            font-size: .82rem;
-            color: rgba(255, 255, 255, .75);
-            margin-top: 4px;
+        .service-slide-content h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 8px;
         }
 
-        @media (min-width: 640px) {
-            .service-card--highlight {
-                grid-column: span 2;
-            }
+        .service-slide-content p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--primary);
+            background: var(--white);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--primary);
         }
 
         /* ============================
@@ -900,7 +904,6 @@
         }
 
         /* 3D Cinematic Utilities */
-        .service-card,
         .benefit-card,
         .how__step,
         .hour-card,
@@ -910,7 +913,6 @@
             transform: perspective(1000px);
         }
 
-        .service-card>*,
         .benefit-card>*,
         .how__step>*,
         .hour-card>*,
@@ -1009,41 +1011,71 @@
 
     <!-- SERVIÇOS -->
     <section class="section" id="servicos" aria-labelledby="servicos-title">
-        <div class="container">
-            <div class="text-center">
+        <div class="container" style="max-width: 1300px;">
+            <div class="text-center" style="max-width: 700px; margin: 0 auto;">
                 <span class="section__label">O que higienizamos</span>
                 <h2 class="section__title" id="servicos-title">Serviços Disponíveis</h2>
-                <p class="section__sub">Atendemos praticamente todos os tipos de estofados e artigos do seu lar — com
-                    qualidade profissional.</p>
+                <p class="section__sub" style="margin-bottom: 12px;">Atendemos praticamente todos os tipos de estofados
+                    e artigos do seu lar — com qualidade visual e eficácia profunda.</p>
             </div>
-            <div class="services__grid">
-                <div class="service-card fade-in"><span class="service-card__icon">🛋️</span><span
-                        class="service-card__name">Sofá</span></div>
-                <div class="service-card fade-in"><span class="service-card__icon">🪑</span><span
-                        class="service-card__name">Poltrona</span></div>
-                <div class="service-card fade-in"><span class="service-card__icon">💺</span><span
-                        class="service-card__name">Cadeira</span></div>
-                <div class="service-card fade-in"><span class="service-card__icon">🤱</span><span
-                        class="service-card__name">Cadeira de Amamentação</span></div>
-                <div class="service-card fade-in"><span class="service-card__icon">🛏️</span><span
-                        class="service-card__name">Colchão</span></div>
-                <div class="service-card fade-in"><span class="service-card__icon">🪑</span><span
-                        class="service-card__name">Puff</span></div>
-                <div class="service-card fade-in"><span class="service-card__icon">🪟</span><span
-                        class="service-card__name">Cortina</span></div>
-                <div class="service-card fade-in"><span class="service-card__icon">🛋️</span><span
-                        class="service-card__name">Recamier</span></div>
-                <div class="service-card fade-in"><span class="service-card__icon">🟦</span><span
-                        class="service-card__name">Tapete</span></div>
-                <!-- Destaque Automotivo -->
-                <div class="service-card service-card--highlight fade-in">
-                    <span class="service-card__icon">🚗</span>
-                    <div>
-                        <div class="service-card__name">Limpeza Automotiva Completa</div>
-                        <div class="service-card__sub">Banco · Carpete · Cinto · Painel · Plásticos · Teto · Portas ·
-                            Porta-malas</div>
+
+            <div class="swiper services-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="service-slide-card">
+                            <img src="https://images.unsplash.com/photo-1540574163026-643ea20abc46?q=80&w=800&auto=format&fit=crop"
+                                alt="Limpeza de Sofá" class="service-slide-img">
+                            <div class="service-slide-content">
+                                <h3>Sofás e Poltronas</h3>
+                                <p>Remoção de manchas, ácaros e restauração da cor do tecido.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-slide-card">
+                            <img src="https://images.unsplash.com/photo-1512438248416-560ea535b8ea?q=80&w=800&auto=format&fit=crop"
+                                alt="Limpeza Estofados" class="service-slide-img">
+                            <div class="service-slide-content">
+                                <h3>Cadeiras de Jantar</h3>
+                                <p>Remoção de respingos de bebidas e sujidades de alimentos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-slide-card">
+                            <img src="https://images.unsplash.com/photo-1588046138717-b77ddf40d62c?q=80&w=800&auto=format&fit=crop"
+                                alt="Limpeza Colchões" class="service-slide-img">
+                            <div class="service-slide-content">
+                                <h3>Colchões</h3>
+                                <p>Durma com saúde. Higienização que elimina pele morta, suor e ácaros.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-slide-card">
+                            <img src="https://images.unsplash.com/photo-1558211583-d26f610cdfc0?q=80&w=800&auto=format&fit=crop"
+                                alt="Limpeza Tapetes" class="service-slide-img">
+                            <div class="service-slide-content">
+                                <h3>Tapetes</h3>
+                                <p>Renovação das fibras e extração profunda de sujeiras que vassouras não alcançam.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-slide-card">
+                            <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop"
+                                alt="Limpeza Automotiva" class="service-slide-img">
+                            <div class="service-slide-content">
+                                <h3>Estética Automotiva</h3>
+                                <p>Limpeza completa: tapetes, bancos, teto e painel para o seu carro.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="swiper-pagination"></div>
+                <!-- Navigation -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </div>
     </section>
@@ -1252,6 +1284,8 @@
         </svg>
     </a>
 
+    <!-- Scripts de Terceiros e Lógica -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
@@ -1259,11 +1293,35 @@
             navbar.classList.toggle('scrolled', window.scrollY > 40);
         }, { passive: true });
 
+        // Swiper Init
+        const swiper = new Swiper('.services-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                900: { slidesPerView: 3, spaceBetween: 30 },
+                1200: { slidesPerView: 4, spaceBetween: 30 }
+            },
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            }
+        });
+
         // GSAP Animations & VanillaTilt Initialization
         gsap.registerPlugin(ScrollTrigger);
 
         // Vanilla Tilt Init
-        VanillaTilt.init(document.querySelectorAll(".service-card, .benefit-card, .hour-card, .payment__method, .payment__discount"), {
+        VanillaTilt.init(document.querySelectorAll(".benefit-card, .hour-card, .payment__method, .payment__discount"), {
             max: 15,
             speed: 400,
             glare: true,
@@ -1285,7 +1343,7 @@
             const label = section.querySelector('.section__label');
             const title = section.querySelector('.section__title') || section.querySelector('.cta-final__title');
             const sub = section.querySelector('.section__sub') || section.querySelector('.cta-final__sub');
-            const cards = section.querySelectorAll('.service-card, .benefit-card, .how__step, .hour-card, .payment__method, .payment__discount, .area__cities, .btn');
+            const cards = section.querySelectorAll('.service-slide-card, .benefit-card, .how__step, .hour-card, .payment__method, .payment__discount, .area__cities, .btn');
 
             const tl = gsap.timeline({
                 scrollTrigger: {
