@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="BigClean – Higienização profissional de estofados a domicílio em Belém, Ananindeua e Marituba (PA). Elimina ácaros, manchas e odores. Solicite seu orçamento!" />
+    <meta name="theme-color" content="#1565C0" />
+    <title>BigClean – Higienização de Estofados em Belém (PA)</title>
+
+    <!-- Preconnect para Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ============================
+       RESET & TOKENS
+    ============================ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #1565C0;
+            --primary-dark: #0D47A1;
+            --primary-light: #1976D2;
+            --accent: #29B6F6;
+            --accent-light: #E3F2FD;
+            --white: #FFFFFF;
+            --gray-50: #F8FAFF;
+            --gray-100: #EFF4FB;
+            --gray-200: #D6E4F7;
+            --gray-600: #4A5568;
+            --gray-800: #1A202C;
+            --success: #2E7D32;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-sm: 0 2px 8px rgba(21, 101, 192, .12);
+            --shadow-md: 0 8px 32px rgba(21, 101, 192, .18);
+            --shadow-lg: 0 20px 60px rgba(21, 101, 192, .22);
+            --transition: all .25s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-800);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============================
+       UTILITIES
+    ============================ */
+        .section {
+            padding: 72px 0;
+        }
+
+        .section--alt {
+            background: var(--gray-50);
+        }
+
+        .section--blue {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            color: var(--white);
+        }
+
+        .section__label {
+            display: inline-block;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .section--blue .section__label {
+            color: var(--accent-light);
+            opacity: .9;
+        }
+
+        .section__title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section__sub {
+            font-size: 1rem;
+            color: var(--gray-600);
+            max-width: 560px;
+        }
+
+        .section--blue .section__sub {
+            color: rgba(255, 255, 255, .82);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center .section__sub {
+            margin: 0 auto;
+        }
+
+        /* Botão WhatsApp / CTA */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn--whatsapp {
+            background: #25D366;
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, .4);
+        }
+
+        .btn--whatsapp:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, .5);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, .6);
+        }
+
+        .btn--outline:hover {
+            background: rgba(255, 255, 255, .12);
+            border-color: var(--white);
+        }
+
+        .btn svg {
+            flex-shrink: 0;
+        }
+
+        /* ============================
+       NAVBAR
+    ============================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            padding: 12px 0;
+        }
+
+        .navbar__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar__logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar__logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar__logo-text {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: -.01em;
+        }
+
+        .navbar.scrolled .navbar__logo-text {
+            color: var(--primary-dark);
+        }
+
+        .navbar__cta {
+            display: none;
+        }
+
+        @media (min-width: 600px) {
+            .navbar__cta {
+                display: inline-flex;
+                padding: 10px 22px;
+                font-size: .875rem;
+            }
+        }
+
+        /* ============================
+       HERO
+    ============================ */
+        .hero {
+            min-height: 100svh;
+            background: linear-gradient(145deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--white);
+            clip-path: ellipse(60% 100% at 50% 100%);
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            color: var(--white);
+            max-width: 680px;
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .25);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: .8rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--white);
+        }
+
+        .hero__badge span {
+            width: 8px;
+            height: 8px;
+            background: #4ADE80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: .6;
+                transform: scale(1.3)
+            }
+        }
+
+        .hero__title {
+            font-size: clamp(2.2rem, 7vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -.02em;
+        }
+
+        .hero__title em {
+            font-style: normal;
+            color: var(--accent);
+        }
+
+        .hero__sub {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            color: rgba(255, 255, 255, .85);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        .hero__ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .hero__stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-top: 56px;
+        }
+
+        .hero__stat-value {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .hero__stat-label {
+            font-size: .8rem;
+            color: rgba(255, 255, 255, .7);
+            margin-top: 2px;
+        }
+
+        /* ============================
+       SERVIÇOS
+    ============================ */
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+            margin-top: 48px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: 24px 16px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .service-card__icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .service-card__name {
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        /* Automotivo destaque */
+        .service-card--highlight {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+            color: var(--white);
+            border-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-align: left;
+            padding: 28px 28px;
+        }
+
+        .service-card--highlight:hover {
+            border-color: transparent;
+        }
+
+        .service-card--highlight .service-card__icon {
+            font-size: 3rem;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .service-card--highlight .service-card__name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .service-card--highlight .service-card__sub {
+            font-size: .82rem;
+            color: rgba(255, 255, 255, .75);
+            margin-top: 4px;
+        }
+
+        @media (min-width: 640px) {
+            .service-card--highlight {
+                grid-column: span 2;
+            }
+        }
+
+        /* ============================
+       BENEFÍCIOS
+    ============================ */
+        .benefits__grid {
+            display: grid;
+            gap: 24px;
+            margin-top: 48px;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .benefits__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .benefits__grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .benefit-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .benefit-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .benefit-card__title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .benefit-card__text {
+            font-size: .88rem;
+            color: var(--gray-600);
+            line-height: 1.65;
+        }
+
+        /* ============================
+       COMO FUNCIONA
+    ============================ */
+        .how__steps {
+            display: grid;
+            gap: 0;
+            margin-top: 56px;
+            counter-reset: steps;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .how__steps {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .how__step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 16px 40px;
+            position: relative;
+        }
+
+        .how__step::after {
+            content: '';
+            position: absolute;
+            top: 32px;
+            right: 0;
+            width: 50%;
+            height: 2px;
+            background: var(--gray-200);
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .how__step:not(:last-child)::after {
+                display: block;
+            }
+        }
+
+        .how__step-num {
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 16px rgba(21, 101, 192, .35);
+        }
+
+        .how__step-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .how__step-text {
+            font-size: .87rem;
+            color: var(--gray-600);
+        }
+
+        /* ============================
+       ÁREA DE ATENDIMENTO
+    ============================ */
+        .area__cities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 36px;
+            justify-content: center;
+        }
+
+        .area__city {
+            background: var(--white);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .95rem;
+            transition: var(--transition);
+        }
+
+        .area__city:hover,
+        .area__city--active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .area__note {
+            text-align: center;
+            margin-top: 24px;
+            font-size: .88rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* ============================
+       HORÁRIOS
+    ============================ */
+        .hours__grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1fr;
+            margin-top: 48px;
+        }
+
+        @media (min-width: 600px) {
+            .hours__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .hours__grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .hour-card {
+            background: rgba(255, 255, 255, .12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .2);
+            border-radius: var(--radius-md);
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .hour-card__icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .hour-card__day {
+            font-size: .85rem;
+            font-weight: 600;
+            opacity: .8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .hour-card__time {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        /* ============================
+       FORMAS DE PAGAMENTO
+    ============================ */
+        .payment__methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 48px;
+            justify-content: center;
+        }
+
+        .payment__method {
+            background: var(--white);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            min-width: 130px;
+            transition: var(--transition);
+        }
+
+        .payment__method:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .payment__method-icon {
+            font-size: 2.4rem;
+        }
+
+        .payment__method-name {
+            font-size: .88rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .payment__method-sub {
+            font-size: .75rem;
+            color: var(--gray-600);
+            text-align: center;
+        }
+
+        .payment__discount {
+            margin-top: 32px;
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            border: 1.5px solid #81C784;
+            border-radius: var(--radius-md);
+            padding: 20px 28px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .payment__discount-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .payment__discount-text {
+            font-size: .93rem;
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        /* ============================
+       CTA FINAL
+    ============================ */
+        .cta-final {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-final__content {
+            position: relative;
+            z-index: 1;
+            color: var(--white);
+        }
+
+        .cta-final__title {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+
+        .cta-final__sub {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, .82);
+            margin-bottom: 40px;
+        }
+
+        /* ============================
+       FOOTER
+    ============================ */
+        footer {
+            background: var(--gray-800);
+            color: rgba(255, 255, 255, .6);
+            text-align: center;
+            padding: 28px 20px;
+            font-size: .85rem;
+        }
+
+        footer strong {
+            color: var(--white);
+        }
+
+        /* ============================
+       FLOAT WHATSAPP
+    ============================ */
+        .wpp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, .5);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .wpp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 28px rgba(37, 211, 102, .6);
+        }
+
+        .wpp-float svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Animate on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Menu principal">
+        <div class="container navbar__inner">
+            <a href="#hero" class="navbar__logo" aria-label="BigClean – Início">
+                <div class="navbar__logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 6l9-3 9 3v6c0 5.25-3.75 10.5-9 12C6.75 22.5 3 17.25 3 12V6z" />
+                        <path d="M9 12l2 2 4-4" />
+                    </svg>
+                </div>
+                <span class="navbar__logo-text">BiggClean</span>
+            </a>
+            <a id="nav-cta" class="btn btn--whatsapp navbar__cta"
+                href="https://wa.me/5591984028561?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+                target="_blank" rel="noopener noreferrer" aria-label="Solicitar orçamento via WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.652A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.36-.213-3.72.97.993-3.622-.235-.373A9.817 9.817 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z" />
+                </svg>
+                Orçamento
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero" aria-label="Seção principal">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge" aria-hidden="true">
+                    <span></span> Atendimento a domicílio em Belém (PA)
+                </div>
+                <h1 class="hero__title">
+                    Estofados <em>limpos</em>,<br />
+                    casa saudável e<br />
+                    cheiro de novo.
+                </h1>
+                <p class="hero__sub">
+                    Higienização profissional de sofás, colchões, tapetes e muito mais — eliminamos ácaros, manchas e
+                    odores com equipamentos de alta tecnologia, sem você sair de casa.
+                </p>
+                <div class="hero__ctas">
+                    <a class="btn btn--whatsapp"
+                        href="https://wa.me/5591984028561?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20higienização."
+                        target="_blank" rel="noopener noreferrer" id="hero-cta-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                            <path
+                                d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.652A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.36-.213-3.72.97.993-3.622-.235-.373A9.817 9.817 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z" />
+                        </svg>
+                        Solicitar Orçamento
+                    </a>
+                    <a class="btn btn--outline" href="#servicos">Ver Serviços</a>
+                </div>
+                <div class="hero__stats" aria-label="Números da BigClean">
+                    <div>
+                        <div class="hero__stat-value">10+</div>
+                        <div class="hero__stat-label">tipos de estofados atendidos</div>
+                    </div>
+                    <div>
+                        <div class="hero__stat-value">1–1h30</div>
+                        <div class="hero__stat-label">duração média do serviço</div>
+                    </div>
+                    <div>
+                        <div class="hero__stat-value">100%</div>
+                        <div class="hero__stat-label">a domicílio, sem stress</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="section" id="servicos" aria-labelledby="servicos-title">
+        <div class="container">
+            <div class="text-center">
+                <span class="section__label">O que higienizamos</span>
+                <h2 class="section__title" id="servicos-title">Serviços Disponíveis</h2>
+                <p class="section__sub">Atendemos praticamente todos os tipos de estofados e artigos do seu lar — com
+                    qualidade profissional.</p>
+            </div>
+            <div class="services__grid">
+                <div class="service-card fade-in"><span class="service-card__icon">🛋️</span><span
+                        class="service-card__name">Sofá</span></div>
+                <div class="service-card fade-in"><span class="service-card__icon">🪑</span><span
+                        class="service-card__name">Poltrona</span></div>
+                <div class="service-card fade-in"><span class="service-card__icon">💺</span><span
+                        class="service-card__name">Cadeira</span></div>
+                <div class="service-card fade-in"><span class="service-card__icon">🤱</span><span
+                        class="service-card__name">Cadeira de Amamentação</span></div>
+                <div class="service-card fade-in"><span class="service-card__icon">🛏️</span><span
+                        class="service-card__name">Colchão</span></div>
+                <div class="service-card fade-in"><span class="service-card__icon">🪑</span><span
+                        class="service-card__name">Puff</span></div>
+                <div class="service-card fade-in"><span class="service-card__icon">🪟</span><span
+                        class="service-card__name">Cortina</span></div>
+                <div class="service-card fade-in"><span class="service-card__icon">🛋️</span><span
+                        class="service-card__name">Recamier</span></div>
+                <div class="service-card fade-in"><span class="service-card__icon">🟦</span><span
+                        class="service-card__name">Tapete</span></div>
+                <!-- Destaque Automotivo -->
+                <div class="service-card service-card--highlight fade-in">
+                    <span class="service-card__icon">🚗</span>
+                    <div>
+                        <div class="service-card__name">Limpeza Automotiva Completa</div>
+                        <div class="service-card__sub">Banco · Carpete · Cinto · Painel · Plásticos · Teto · Portas ·
+                            Porta-malas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFÍCIOS -->
+    <section class="section section--alt" id="beneficios" aria-labelledby="beneficios-title">
+        <div class="container">
+            <div class="text-center">
+                <span class="section__label">Por que escolher a BigClean</span>
+                <h2 class="section__title" id="beneficios-title">Mais que limpeza — <br />saúde para sua família</h2>
+                <p class="section__sub">Nosso processo elimina o que os olhos não veem, protegendo a saúde de quem você
+                    ama.</p>
+            </div>
+            <div class="benefits__grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-card__icon">🦠</div>
+                    <h3 class="benefit-card__title">Higienização Profunda</h3>
+                    <p class="benefit-card__text">Elimina ácaros, fungos, bactérias e agentes causadores de doenças
+                        alérgicas e respiratórias.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-card__icon">🧹</div>
+                    <h3 class="benefit-card__title">Remoção de Manchas</h3>
+                    <p class="benefit-card__text">Técnicas e produtos especializados que removem manchas difíceis sem
+                        danificar o tecido.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-card__icon">🌿</div>
+                    <h3 class="benefit-card__title">Eliminação de Odores</h3>
+                    <p class="benefit-card__text">Seu estofado volta a ter cheiro de novo, eliminando odores de mofo,
+                        animais e uso.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-card__icon">🎨</div>
+                    <h3 class="benefit-card__title">Restauração de Cor</h3>
+                    <p class="benefit-card__text">Em muitos casos recuperamos a cor original do tecido, deixando o
+                        estofado com aparência renovada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="section" id="como-funciona" aria-labelledby="como-title">
+        <div class="container">
+            <div class="text-center">
+                <span class="section__label">Processo</span>
+                <h2 class="section__title" id="como-title">Como Funciona?</h2>
+                <p class="section__sub">Simples e sem complicações — do orçamento ao estofado limpo em poucos passos.
+                </p>
+            </div>
+            <div class="how__steps">
+                <div class="how__step fade-in">
+                    <div class="how__step-num">1</div>
+                    <h3 class="how__step-title">Solicite o Orçamento</h3>
+                    <p class="how__step-text">Mande uma mensagem via WhatsApp com os itens que deseja higienizar.</p>
+                </div>
+                <div class="how__step fade-in">
+                    <div class="how__step-num">2</div>
+                    <h3 class="how__step-title">Agendamos a Visita</h3>
+                    <p class="how__step-text">Escolha o melhor horário dentro da nossa grade de atendimento.</p>
+                </div>
+                <div class="how__step fade-in">
+                    <div class="how__step-num">3</div>
+                    <h3 class="how__step-title">Higienização no Local</h3>
+                    <p class="how__step-text">Nossa equipe vai até você e realiza o serviço com duração média de 1h a
+                        1h30.</p>
+                </div>
+                <div class="how__step fade-in">
+                    <div class="how__step-num">4</div>
+                    <h3 class="how__step-title">Secagem e Entrega</h3>
+                    <p class="how__step-text">O estofado seca em 2h a 4h (varia conforme clima). Pronto para usar!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÁREA DE ATENDIMENTO -->
+    <section class="section section--alt" id="area" aria-labelledby="area-title">
+        <div class="container text-center">
+            <span class="section__label">Onde atendemos</span>
+            <h2 class="section__title" id="area-title">Área de Atendimento</h2>
+            <p class="section__sub">Atendemos as principais cidades da região metropolitana de Belém. Outras
+                localidades, consulte!</p>
+            <div class="area__cities" aria-label="Cidades atendidas">
+                <div class="area__city area__city--active">📍 Belém</div>
+                <div class="area__city area__city--active">📍 Ananindeua</div>
+                <div class="area__city area__city--active">📍 Marituba</div>
+            </div>
+            <p class="area__note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                Outras cidades da região sujeitas a análise — entre em contato para verificar disponibilidade.
+            </p>
+        </div>
+    </section>
+
+    <!-- HORÁRIOS -->
+    <section class="section section--blue" id="horarios" aria-labelledby="horarios-title">
+        <div class="container text-center">
+            <span class="section__label">Funcionamento</span>
+            <h2 class="section__title" id="horarios-title">Horários de Atendimento</h2>
+            <p class="section__sub">Estamos disponíveis para atender você nos seguintes horários.</p>
+            <div class="hours__grid">
+                <div class="hour-card fade-in">
+                    <div class="hour-card__icon">📅</div>
+                    <div class="hour-card__day">Segunda a Sexta</div>
+                    <div class="hour-card__time">08:30 – 18:00</div>
+                </div>
+                <div class="hour-card fade-in">
+                    <div class="hour-card__icon">🕘</div>
+                    <div class="hour-card__day">Sábado</div>
+                    <div class="hour-card__time">08:30 – 12:00</div>
+                </div>
+                <div class="hour-card fade-in">
+                    <div class="hour-card__icon">⏱️</div>
+                    <div class="hour-card__day">Duração do Serviço</div>
+                    <div class="hour-card__time" style="font-size:1.1rem">1h – 1h30 + 2h–4h secagem</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMAS DE PAGAMENTO -->
+    <section class="section" id="pagamento" aria-labelledby="pagamento-title">
+        <div class="container text-center">
+            <span class="section__label">Facilidade</span>
+            <h2 class="section__title" id="pagamento-title">Formas de Pagamento</h2>
+            <p class="section__sub">Pagamento descomplicado para sua comodidade.</p>
+            <div class="payment__methods">
+                <div class="payment__method fade-in">
+                    <span class="payment__method-icon">📱</span>
+                    <span class="payment__method-name">Pix</span>
+                    <span class="payment__method-sub">Transferência instantânea</span>
+                </div>
+                <div class="payment__method fade-in">
+                    <span class="payment__method-icon">💵</span>
+                    <span class="payment__method-name">Dinheiro</span>
+                    <span class="payment__method-sub">À vista</span>
+                </div>
+                <div class="payment__method fade-in">
+                    <span class="payment__method-icon">💳</span>
+                    <span class="payment__method-name">Cartão de Crédito</span>
+                    <span class="payment__method-sub">Parcelamento em até 12×</span>
+                </div>
+            </div>
+            <div class="payment__discount fade-in">
+                <span class="payment__discount-icon">🏷️</span>
+                <p class="payment__discount-text">
+                    <strong>Desconto especial</strong> para 3 ou mais itens higienizados no mesmo atendimento! Peça seu
+                    orçamento e economize.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final" id="orcamento" aria-labelledby="cta-title">
+        <div class="container cta-final__content">
+            <h2 class="cta-final__title" id="cta-title">Pronto para ter um<br />estofado limpo de verdade?</h2>
+            <p class="cta-final__sub">Solicite agora mesmo um orçamento gratuito pelo WhatsApp.<br />Atendemos a
+                domicílio em Belém, Ananindeua e Marituba.</p>
+            <a class="btn btn--whatsapp" style="font-size:1.1rem;padding:18px 40px;"
+                href="https://wa.me/5591984028561?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20higienização%20de%20estofados."
+                target="_blank" rel="noopener noreferrer" id="final-cta">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.652A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.36-.213-3.72.97.993-3.622-.235-.373A9.817 9.817 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z" />
+                </svg>
+                Solicitar Orçamento Gratuito
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 <strong>BigClean</strong> – Higienização Profissional de Estofados · Belém, Ananindeua e Marituba (PA)
+        </p>
+        <p style="margin-top:8px;">
+            <a href="https://wa.me/5591984028561" target="_blank" rel="noopener noreferrer"
+                style="color:rgba(255,255,255,.7);">📱 (91) 98402-8561</a>
+        </p>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <a class="wpp-float" href="https://wa.me/5591984028561?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+        target="_blank" rel="noopener noreferrer" aria-label="Contato WhatsApp BigClean" id="wpp-float-btn"
+        title="Fale conosco pelo WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.652A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.36-.213-3.72.97.993-3.622-.235-.373A9.817 9.817 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z" />
+        </svg>
+    </a>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        // Fade-in on scroll (IntersectionObserver)
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        fadeEls.forEach(el => observer.observe(el));
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
