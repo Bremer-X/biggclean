@@ -15,6 +15,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
 
+    <!-- GSAP & VanillaTilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
     <style>
         /* ============================
        RESET & TOKENS
@@ -805,16 +810,33 @@
             height: 30px;
         }
 
-        /* Animate on scroll */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity .6s ease, transform .6s ease;
+        /* 3D Cinematic Utilities */
+        .service-card,
+        .benefit-card,
+        .how__step,
+        .hour-card,
+        .payment__method,
+        .payment__discount {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: none;
+        .service-card>*,
+        .benefit-card>*,
+        .how__step>*,
+        .hour-card>*,
+        .payment__method>*,
+        .payment__discount>* {
+            transform: translateZ(30px);
+        }
+
+        .hero__content {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .hero__content>* {
+            transform: translateZ(20px);
         }
     </style>
 </head>
@@ -1142,17 +1164,47 @@
             navbar.classList.toggle('scrolled', window.scrollY > 40);
         }, { passive: true });
 
-        // Fade-in on scroll (IntersectionObserver)
-        const fadeEls = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+        // GSAP Animations & VanillaTilt Initialization
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Vanilla Tilt Init
+        VanillaTilt.init(document.querySelectorAll(".service-card, .benefit-card, .hour-card, .payment__method, .payment__discount"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2,
+            perspective: 1000,
+        });
+
+        // Hero Cinematic Reveal
+        const heroTl = gsap.timeline();
+        heroTl.from(".navbar", { y: -50, opacity: 0, duration: 1, ease: "power3.out" })
+            .from(".hero__badge", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.5")
+            .from(".hero__title", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.4")
+            .from(".hero__sub", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+            .from(".hero__ctas > *", { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.6")
+            .from(".hero__stats > *", { scale: 0.9, opacity: 0, duration: 0.6, stagger: 0.15, ease: "power2.out" }, "-=0.4");
+
+        // Section animations on scroll
+        gsap.utils.toArray('.section, .cta-final').forEach(section => {
+            const label = section.querySelector('.section__label');
+            const title = section.querySelector('.section__title') || section.querySelector('.cta-final__title');
+            const sub = section.querySelector('.section__sub') || section.querySelector('.cta-final__sub');
+            const cards = section.querySelectorAll('.service-card, .benefit-card, .how__step, .hour-card, .payment__method, .payment__discount, .area__cities, .btn');
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
                 }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        fadeEls.forEach(el => observer.observe(el));
+
+            if (label) tl.from(label, { y: 20, opacity: 0, duration: 0.5 });
+            if (title) tl.from(title, { y: 30, opacity: 0, duration: 0.6 }, "-=0.3");
+            if (sub) tl.from(sub, { y: 20, opacity: 0, duration: 0.6 }, "-=0.4");
+            if (cards.length > 0) tl.from(cards, { y: 40, opacity: 0, duration: 0.7, stagger: 0.1, ease: "power2.out" }, "-=0.4");
+        });
 
         // Smooth scroll para links internos
         document.querySelectorAll('a[href^="#"]').forEach(a => {
