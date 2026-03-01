@@ -9,6 +9,16 @@
     <meta name="theme-color" content="#1565C0" />
     <title>BigClean – Higienização de Estofados em Belém (PA)</title>
 
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bigclean.com.br/" />
+    <meta property="og:title" content="BigClean – Estofados Limpos, Casa Saudável em Belém (PA)" />
+    <meta property="og:description"
+        content="Higienização profissional de sofás, colchões e tapetes a domicílio. Elimina ácaros, manchas e odores. Atendemos Belém, Ananindeua e Marituba." />
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1540574163026-643ea20abc46?q=80&w=1200&auto=format&fit=crop" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <!-- Preconnect para Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -823,6 +833,302 @@
         }
 
         /* ============================
+       PROBLEMA
+    ============================ */
+        .problem__grid {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: 1fr;
+            margin-top: 48px;
+        }
+
+        @media (min-width: 640px) {
+            .problem__grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .problem-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 36px 24px;
+            background: var(--white);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            border-top: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .problem-card__icon {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+        }
+
+        .problem-card__title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 8px;
+        }
+
+        .problem-card__text {
+            font-size: .88rem;
+            color: var(--gray-600);
+            line-height: 1.65;
+        }
+
+        /* ============================
+       DEPOIMENTOS
+    ============================ */
+        .testimonials__grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1fr;
+            margin-top: 48px;
+        }
+
+        @media (min-width: 640px) {
+            .testimonials__grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .testimonials__grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: 32px 28px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 16px;
+            left: 24px;
+            font-size: 4rem;
+            color: var(--accent-light);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .testimonial-card__stars {
+            color: #F59E0B;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card__text {
+            font-size: .95rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-card__author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-card__avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .testimonial-card__name {
+            font-size: .93rem;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+
+        .testimonial-card__role {
+            font-size: .8rem;
+            color: var(--gray-600);
+        }
+
+        .testimonials__trust {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--gray-600);
+        }
+
+        .trust-badge__icon {
+            font-size: 1.5rem;
+        }
+
+        /* ============================
+       FAQ
+    ============================ */
+        .faq__list {
+            margin-top: 48px;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq__item {
+            background: var(--white);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+
+        .faq__item.open {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq__question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 22px 24px;
+            font-size: .97rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: color .2s ease;
+        }
+
+        .faq__item.open .faq__question {
+            color: var(--primary);
+        }
+
+        .faq__icon {
+            width: 28px;
+            height: 28px;
+            background: var(--gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            transition: transform .3s ease, background .2s ease;
+        }
+
+        .faq__item.open .faq__icon {
+            transform: rotate(45deg);
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .faq__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s ease, padding .35s ease;
+            padding: 0 24px;
+            font-size: .92rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .faq__item.open .faq__answer {
+            max-height: 300px;
+            padding: 0 24px 22px;
+        }
+
+        .faq__cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* ============================
+       STICKY CTA MOBILE
+    ============================ */
+        .sticky-cta {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .sticky-cta {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 998;
+                padding: 12px 16px;
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(10px);
+                border-top: 1px solid var(--gray-200);
+                box-shadow: 0 -4px 24px rgba(21, 101, 192, .12);
+                gap: 10px;
+                align-items: center;
+            }
+
+            .sticky-cta .btn {
+                flex: 1;
+                justify-content: center;
+                padding: 14px 20px;
+                font-size: .95rem;
+            }
+
+            /* Evita que o conteúdo fique escondido atrás do sticky bar */
+            body {
+                padding-bottom: 86px;
+            }
+
+            .wpp-float {
+                display: none;
+            }
+        }
+
+        /* ============================
        CTA FINAL
     ============================ */
         .cta-final {
@@ -1009,6 +1315,38 @@
         </div>
     </section>
 
+    <!-- PROBLEMA -->
+    <section class="section section--alt" id="problem" aria-labelledby="problem-title">
+        <div class="container">
+            <div class="text-center">
+                <span class="section__label">Você se identifica?</span>
+                <h2 class="section__title" id="problem-title">Esses problemas parecem<br />familiares?</h2>
+                <p class="section__sub">Se você respondeu sim para qualquer um deles, a BigClean é exatamente o que você
+                    precisa.</p>
+            </div>
+            <div class="problem__grid">
+                <div class="problem-card">
+                    <div class="problem-card__icon">🤧</div>
+                    <h3 class="problem-card__title">Cheiro ruim que não sai</h3>
+                    <p class="problem-card__text">Odor de mofo, animais ou uso prolongado que persiste mesmo depois de
+                        limpar com produtos caseiros.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-card__icon">🦠</div>
+                    <h3 class="problem-card__title">Alergias e crises frequentes</h3>
+                    <p class="problem-card__text">Espirros, coceira e crises asmáticas causadas por ácaros e bactérias
+                        invisíveis escondidos no estofado.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-card__icon">😩</div>
+                    <h3 class="problem-card__title">Manchas difíceis de remover</h3>
+                    <p class="problem-card__text">Manchas de café, vinho, alimentos ou umidade que produtos comuns não
+                        conseguem eliminar de verdade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SERVIÇOS -->
     <section class="section" id="servicos" aria-labelledby="servicos-title">
         <div class="container" style="max-width: 1300px;">
@@ -1023,8 +1361,8 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="service-slide-card">
-                            <img src="https://images.unsplash.com/photo-1540574163026-643ea20abc46?q=80&w=800&auto=format&fit=crop"
-                                alt="Limpeza de Sofá" class="service-slide-img">
+                            <img src="assets/images/service_sofa_1772331143770.png" alt="Limpeza de Sofá"
+                                class="service-slide-img">
                             <div class="service-slide-content">
                                 <h3>Sofás e Poltronas</h3>
                                 <p>Remoção de manchas, ácaros e restauração da cor do tecido.</p>
@@ -1033,8 +1371,8 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="service-slide-card">
-                            <img src="https://images.unsplash.com/photo-1512438248416-560ea535b8ea?q=80&w=800&auto=format&fit=crop"
-                                alt="Limpeza Estofados" class="service-slide-img">
+                            <img src="assets/images/service_chairs_1772331157995.png" alt="Limpeza Estofados"
+                                class="service-slide-img">
                             <div class="service-slide-content">
                                 <h3>Cadeiras de Jantar</h3>
                                 <p>Remoção de respingos de bebidas e sujidades de alimentos.</p>
@@ -1043,8 +1381,8 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="service-slide-card">
-                            <img src="https://images.unsplash.com/photo-1588046138717-b77ddf40d62c?q=80&w=800&auto=format&fit=crop"
-                                alt="Limpeza Colchões" class="service-slide-img">
+                            <img src="assets/images/service_mattress_1772331174785.png" alt="Limpeza Colchões"
+                                class="service-slide-img">
                             <div class="service-slide-content">
                                 <h3>Colchões</h3>
                                 <p>Durma com saúde. Higienização que elimina pele morta, suor e ácaros.</p>
@@ -1053,8 +1391,8 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="service-slide-card">
-                            <img src="https://images.unsplash.com/photo-1558211583-d26f610cdfc0?q=80&w=800&auto=format&fit=crop"
-                                alt="Limpeza Tapetes" class="service-slide-img">
+                            <img src="assets/images/service_rug_1772331188523.png" alt="Limpeza Tapetes"
+                                class="service-slide-img">
                             <div class="service-slide-content">
                                 <h3>Tapetes</h3>
                                 <p>Renovação das fibras e extração profunda de sujeiras que vassouras não alcançam.</p>
@@ -1063,8 +1401,8 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="service-slide-card">
-                            <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop"
-                                alt="Limpeza Automotiva" class="service-slide-img">
+                            <img src="assets/images/service_car_1772331200532.png" alt="Limpeza Automotiva"
+                                class="service-slide-img">
                             <div class="service-slide-content">
                                 <h3>Estética Automotiva</h3>
                                 <p>Limpeza completa: tapetes, bancos, teto e painel para o seu carro.</p>
@@ -1217,19 +1555,22 @@
             <p class="section__sub">Pagamento descomplicado para sua comodidade.</p>
             <div class="payment__methods">
                 <div class="payment__method fade-in">
-                    <span class="payment__method-icon">📱</span>
+                    <img src="assets/images/icon_pix_1772333031794.png" alt="Pix"
+                        style="width: 64px; height: 64px; border-radius: 14px; object-fit: cover; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                     <span class="payment__method-name">Pix</span>
                     <span class="payment__method-sub">Transferência instantânea</span>
                 </div>
                 <div class="payment__method fade-in">
-                    <span class="payment__method-icon">💵</span>
-                    <span class="payment__method-name">Dinheiro</span>
-                    <span class="payment__method-sub">À vista</span>
-                </div>
-                <div class="payment__method fade-in">
-                    <span class="payment__method-icon">💳</span>
+                    <img src="assets/images/icon_credit_1772333043781.png" alt="Cartão de Crédito"
+                        style="width: 64px; height: 64px; border-radius: 14px; object-fit: cover; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                     <span class="payment__method-name">Cartão de Crédito</span>
                     <span class="payment__method-sub">Parcelamento em até 12×</span>
+                </div>
+                <div class="payment__method fade-in">
+                    <img src="assets/images/icon_debit_1772333056427.png" alt="Cartão de Débito"
+                        style="width: 64px; height: 64px; border-radius: 14px; object-fit: cover; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <span class="payment__method-name">Cartão de Débito</span>
+                    <span class="payment__method-sub">À vista no débito</span>
                 </div>
             </div>
             <div class="payment__discount fade-in">
@@ -1242,14 +1583,169 @@
         </div>
     </section>
 
+    <!-- DEPOIMENTOS -->
+    <section class="section section--alt" id="depoimentos" aria-labelledby="depoimentos-title">
+        <div class="container">
+            <div class="text-center">
+                <span class="section__label">O que dizem os clientes</span>
+                <h2 class="section__title" id="depoimentos-title">Resultados que falam por si</h2>
+                <p class="section__sub">Mais de centenas de famílias em Belém já transformaram seus estofados com a
+                    BigClean.</p>
+            </div>
+            <div class="testimonials__grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <p class="testimonial-card__text">Meu sofá estava com um cheiro horrível por causa do cachorro.
+                        Depois da higienização ficou como novo! Atendimento rápido e muito profissional.</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">👩</div>
+                        <div>
+                            <div class="testimonial-card__name">Ana Paula S.</div>
+                            <div class="testimonial-card__role">Belém, PA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <p class="testimonial-card__text">Fiz a higienização do colchão de casal e das cadeiras da sala.
+                        Manchas que achava que não sairiam nunca — saíram todas! Recomendo demais.</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">👨</div>
+                        <div>
+                            <div class="testimonial-card__name">Carlos M.</div>
+                            <div class="testimonial-card__role">Ananindeua, PA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-card__stars">★★★★★</div>
+                    <p class="testimonial-card__text">Minha filha é alérgica e desde a limpeza do colchão e sofá, as
+                        crises diminuíram muito. Serviço excelente, equipe educada e pontual. Já estou agendando a
+                        próxima!</p>
+                    <div class="testimonial-card__author">
+                        <div class="testimonial-card__avatar">👩‍👧</div>
+                        <div>
+                            <div class="testimonial-card__name">Fernanda L.</div>
+                            <div class="testimonial-card__role">Marituba, PA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonials__trust">
+                <div class="trust-badge"><span class="trust-badge__icon">🏅</span> 100% a domicílio</div>
+                <div class="trust-badge"><span class="trust-badge__icon">⚡</span> Resposta rápida</div>
+                <div class="trust-badge"><span class="trust-badge__icon">🛡️</span> Produtos seguros</div>
+                <div class="trust-badge"><span class="trust-badge__icon">✅</span> Resultados garantidos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="container">
+            <div class="text-center">
+                <span class="section__label">Dúvidas frequentes</span>
+                <h2 class="section__title" id="faq-title">Perguntas &amp; Respostas</h2>
+                <p class="section__sub">Tudo que você precisa saber antes de agendar.</p>
+            </div>
+            <div class="faq__list" role="list">
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" id="faq-q1" aria-controls="faq-a1">
+                        Quanto tempo demora o serviço?
+                        <span class="faq__icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq__answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
+                        A higienização em si dura entre <strong>1 hora e 1h30</strong> dependendo da quantidade de
+                        itens. Após o serviço, o estofado precisa de 2 a 4 horas para secar completamente (varia
+                        conforme o clima).
+                    </div>
+                </div>
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" id="faq-q2" aria-controls="faq-a2">
+                        Preciso sair de casa durante o atendimento?
+                        <span class="faq__icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq__answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
+                        Não! Atendemos <strong>totalmente a domicílio</strong>. Você não precisa tirar o estofado de
+                        dentro de casa nem se deslocar a nenhum lugar. Nossa equipe chega, realiza o serviço e você fica
+                        em casa confortavelmente.
+                    </div>
+                </div>
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" id="faq-q3" aria-controls="faq-a3">
+                        Os produtos usados são seguros para crianças e animais?
+                        <span class="faq__icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq__answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
+                        Sim! Utilizamos produtos <strong>biodegradáveis e hipoalergênicos</strong>, seguros para
+                        crianças, idosos e animais de estimação. Após a secagem completa (2–4h), o estofado fica
+                        liberado para uso normal.
+                    </div>
+                </div>
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" id="faq-q4" aria-controls="faq-a4">
+                        Todas as manchas são removidas?
+                        <span class="faq__icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq__answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
+                        A maioria das manchas é removida com sucesso. No entanto, manchas muito antigas ou causadas por
+                        certos produtos químicos podem não sair completamente. Avaliamos cada caso durante a visita e
+                        somos transparentes antes de iniciar o serviço.
+                    </div>
+                </div>
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" id="faq-q5" aria-controls="faq-a5">
+                        Como funciona o orçamento?
+                        <span class="faq__icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq__answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
+                        O orçamento é <strong>gratuito e sem compromisso</strong>. Basta nos enviar uma mensagem no
+                        WhatsApp informando os itens que deseja higienizar. Respondemos em até 5 minutos durante o
+                        horário de atendimento.
+                    </div>
+                </div>
+                <div class="faq__item" role="listitem">
+                    <button class="faq__question" aria-expanded="false" id="faq-q6" aria-controls="faq-a6">
+                        Atendem em que cidades?
+                        <span class="faq__icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq__answer" id="faq-a6" role="region" aria-labelledby="faq-q6">
+                        Atendemos regularmente <strong>Belém, Ananindeua e Marituba</strong>. Para outras cidades da
+                        região metropolitana, entre em contato para verificar disponibilidade e possível taxa de
+                        deslocamento.
+                    </div>
+                </div>
+            </div>
+            <div class="faq__cta">
+                <a class="btn btn--whatsapp"
+                    href="https://wa.me/5591984028561?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20servi%C3%A7o."
+                    target="_blank" rel="noopener noreferrer" id="faq-cta">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        <path
+                            d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.652A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.36-.213-3.72.97.993-3.622-.235-.373A9.817 9.817 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z" />
+                    </svg>
+                    Ainda tem dúvidas? Fale conosco
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA FINAL -->
     <section class="cta-final" id="orcamento" aria-labelledby="cta-title">
         <div class="container cta-final__content">
+            <div
+                style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);padding:8px 18px;border-radius:50px;font-size:.8rem;font-weight:600;margin-bottom:20px;color:var(--white);">
+                <span
+                    style="width:8px;height:8px;background:#4ADE80;border-radius:50%;animation:pulse 2s infinite;"></span>
+                Vagas disponíveis para esta semana
+            </div>
             <h2 class="cta-final__title" id="cta-title">Pronto para ter um<br />estofado limpo de verdade?</h2>
             <p class="cta-final__sub">Solicite agora mesmo um orçamento gratuito pelo WhatsApp.<br />Atendemos a
                 domicílio em Belém, Ananindeua e Marituba.</p>
             <a class="btn btn--whatsapp" style="font-size:1.1rem;padding:18px 40px;"
-                href="https://wa.me/5591984028561?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20higienização%20de%20estofados."
+                href="https://wa.me/5591984028561?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20higieniza%C3%A7%C3%A3o%20de%20estofados."
                 target="_blank" rel="noopener noreferrer" id="final-cta">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                     <path
@@ -1259,21 +1755,69 @@
                 </svg>
                 Solicitar Orçamento Gratuito
             </a>
+            <p style="margin-top:14px;font-size:.85rem;color:rgba(255,255,255,.7);">⚡ Respondemos em até 5 minutos ·
+                Orçamento totalmente gratuito</p>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2025 <strong>BigClean</strong> – Higienização Profissional de Estofados · Belém, Ananindeua e Marituba (PA)
-        </p>
-        <p style="margin-top:8px;">
+        <div
+            style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;padding:0 20px;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <div
+                    style="width:36px;height:36px;background:var(--primary);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 6l9-3 9 3v6c0 5.25-3.75 10.5-9 12C6.75 22.5 3 17.25 3 12V6z" />
+                        <path d="M9 12l2 2 4-4" />
+                    </svg>
+                </div>
+                <span
+                    style="color:var(--white);font-weight:800;font-size:1.1rem;letter-spacing:-.01em;">BiggClean</span>
+            </div>
+            <nav style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;" aria-label="Links do rodapé">
+                <a href="#servicos" style="color:rgba(255,255,255,.6);font-size:.85rem;transition:color .2s;"
+                    onmouseover="this.style.color='#fff'"
+                    onmouseout="this.style.color='rgba(255,255,255,.6)'">Serviços</a>
+                <a href="#como-funciona" style="color:rgba(255,255,255,.6);font-size:.85rem;transition:color .2s;"
+                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Como
+                    Funciona</a>
+                <a href="#depoimentos" style="color:rgba(255,255,255,.6);font-size:.85rem;transition:color .2s;"
+                    onmouseover="this.style.color='#fff'"
+                    onmouseout="this.style.color='rgba(255,255,255,.6)'">Depoimentos</a>
+                <a href="#area" style="color:rgba(255,255,255,.6);font-size:.85rem;transition:color .2s;"
+                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Área de
+                    Atendimento</a>
+                <a href="#faq" style="color:rgba(255,255,255,.6);font-size:.85rem;transition:color .2s;"
+                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">FAQ</a>
+            </nav>
             <a href="https://wa.me/5591984028561" target="_blank" rel="noopener noreferrer"
-                style="color:rgba(255,255,255,.7);">📱 (91) 98402-8561</a>
-        </p>
+                style="color:rgba(255,255,255,.7);font-size:.85rem;">📱 (91) 98402-8561</a>
+        </div>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,.1);margin:0 0 16px;" />
+        <p style="font-size:.8rem;">© 2025 <strong>BigClean</strong> – Higienização Profissional de Estofados · Belém,
+            Ananindeua e Marituba (PA)</p>
     </footer>
 
+    <!-- STICKY CTA MOBILE -->
+    <div class="sticky-cta" role="complementary" aria-label="Ação rápida de contato">
+        <a class="btn btn--whatsapp"
+            href="https://wa.me/5591984028561?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+            target="_blank" rel="noopener noreferrer" id="sticky-cta-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                <path
+                    d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.852L0 24l6.335-1.652A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.37l-.36-.213-3.72.97.993-3.622-.235-.373A9.817 9.817 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z" />
+            </svg>
+            Solicitar Orçamento
+        </a>
+    </div>
+
     <!-- BOTÃO FLUTUANTE WHATSAPP -->
-    <a class="wpp-float" href="https://wa.me/5591984028561?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+    <a class="wpp-float"
+        href="https://wa.me/5591984028561?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento."
         target="_blank" rel="noopener noreferrer" aria-label="Contato WhatsApp BigClean" id="wpp-float-btn"
         title="Fale conosco pelo WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1343,7 +1887,7 @@
             const label = section.querySelector('.section__label');
             const title = section.querySelector('.section__title') || section.querySelector('.cta-final__title');
             const sub = section.querySelector('.section__sub') || section.querySelector('.cta-final__sub');
-            const cards = section.querySelectorAll('.service-slide-card, .benefit-card, .how__step, .hour-card, .payment__method, .payment__discount, .area__cities, .btn');
+            const cards = section.querySelectorAll('.services-swiper, .benefit-card, .how__step, .hour-card, .payment__discount, .area__cities, .btn');
 
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -1357,6 +1901,36 @@
             if (title) tl.from(title, { y: 30, opacity: 0, duration: 0.6 }, "-=0.3");
             if (sub) tl.from(sub, { y: 20, opacity: 0, duration: 0.6 }, "-=0.4");
             if (cards.length > 0) tl.from(cards, { y: 40, opacity: 0, duration: 0.7, stagger: 0.1, ease: "power2.out" }, "-=0.4");
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq__item').forEach(item => {
+            const btn = item.querySelector('.faq__question');
+            btn.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+                // Fecha todos
+                document.querySelectorAll('.faq__item').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+                });
+                // Abre o clicado (se não estava aberto)
+                if (!isOpen) {
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // GSAP para novas seções
+        gsap.utils.toArray('.testimonial-card, .problem-card, .faq__item').forEach((el, i) => {
+            gsap.from(el, {
+                scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+                y: 32,
+                opacity: 0,
+                duration: 0.6,
+                delay: (i % 3) * 0.1,
+                ease: 'power2.out'
+            });
         });
 
         // Smooth scroll para links internos
