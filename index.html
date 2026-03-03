@@ -7,7 +7,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -1311,7 +1311,8 @@
                 <div class="hero__ctas">
                     <a class="btn btn--whatsapp"
                         href="https://wa.me/5591984028561?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20higienização."
-                        target="_blank" rel="noopener noreferrer" id="hero-cta-primary">
+                        target="_blank" rel="noopener noreferrer" id="hero-cta-primary"
+                        onclick="fbq('track', 'Contact')">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
@@ -1745,7 +1746,7 @@
             <div class="faq__cta">
                 <a class="btn btn--whatsapp"
                     href="https://wa.me/5591984028561?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20servi%C3%A7o."
-                    target="_blank" rel="noopener noreferrer" id="faq-cta">
+                    target="_blank" rel="noopener noreferrer" id="faq-cta" onclick="fbq('track', 'Contact')">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path
                             d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
@@ -1772,7 +1773,7 @@
                 domicílio em Belém, Ananindeua e Marituba.</p>
             <a class="btn btn--whatsapp" style="font-size:1.1rem;padding:18px 40px;"
                 href="https://wa.me/5591984028561?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20higieniza%C3%A7%C3%A3o%20de%20estofados."
-                target="_blank" rel="noopener noreferrer" id="final-cta">
+                target="_blank" rel="noopener noreferrer" id="final-cta" onclick="fbq('track', 'Contact')">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
@@ -1819,7 +1820,8 @@
                     onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">FAQ</a>
             </nav>
             <a href="https://wa.me/5591984028561" target="_blank" rel="noopener noreferrer"
-                style="color:rgba(255,255,255,.7);font-size:.85rem;">📱 (91) 98402-8561</a>
+                onclick="fbq('track', 'Contact')" style="color:rgba(255,255,255,.7);font-size:.85rem;">📱 (91)
+                98402-8561</a>
         </div>
         <hr style="border:none;border-top:1px solid rgba(255,255,255,.1);margin:0 0 16px;" />
         <p style="font-size:.8rem;">© 2025 <strong>BigClean</strong> – Higienização Profissional de Estofados · Belém,
@@ -1830,7 +1832,7 @@
     <div class="sticky-cta" role="complementary" aria-label="Ação rápida de contato">
         <a class="btn btn--whatsapp"
             href="https://wa.me/5591984028561?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento."
-            target="_blank" rel="noopener noreferrer" id="sticky-cta-btn">
+            target="_blank" rel="noopener noreferrer" id="sticky-cta-btn" onclick="fbq('track', 'Contact')">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path
                     d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
@@ -1845,7 +1847,7 @@
     <a class="wpp-float"
         href="https://wa.me/5591984028561?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento."
         target="_blank" rel="noopener noreferrer" aria-label="Contato WhatsApp BigClean" id="wpp-float-btn"
-        title="Fale conosco pelo WhatsApp">
+        title="Fale conosco pelo WhatsApp" onclick="fbq('track', 'Contact')">
         <svg viewBox="0 0 24 24" fill="currentColor">
             <path
                 d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
